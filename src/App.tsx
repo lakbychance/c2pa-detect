@@ -8,6 +8,12 @@ const c2pa = await createC2pa({
   wasmSrc,
 });
 
+const getAlertMessage = ({ result, source }: { result: string, source?: string }) => {
+  let message = `Result: ${result}`;
+  if (source) message = `${message}\nSource: ${source}`;
+  return message;
+}
+
 function App() {
   useEffect(() => {
     const handler = async ({ type, imageUrl }: { type: string, imageUrl: string }) => {
@@ -20,7 +26,7 @@ function App() {
           const result = classifyImageOrigin(manifestStore);
           const classificationLabel = formatClassificationLabel(result.classification);
           const sourceName = normalizeAISourceName(result.aiGenerator);
-          alert(`Result: ${classificationLabel}\nSource: ${sourceName}`);
+          alert(getAlertMessage({ result: classificationLabel, source: sourceName }));
         }
         else {
           alert("Unable to get C2PA manifest for this image")

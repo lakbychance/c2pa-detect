@@ -2,6 +2,14 @@
 
 A Chrome browser extension that detects and verifies C2PA (Coalition for Content Provenance and Authenticity) credentials in images to determine their AI origin classification.
 
+## How Effective Is It Really?
+
+TBH, it's pretty useless right now. Most of the internet serves media assets through CDNs, and most CDNs don't preserve C2PA credentials when processing uploaded images. [Cloudflare](https://blog.cloudflare.com/preserve-content-credentials-with-cloudflare-images/) is one of the few that officially released support for it. So when you see pictures on LinkedIn, Twitter, etc. that are likely AI-generated, you can't verify them with this tool because those credentials got stripped during the upload/CDN pipeline.
+
+Is this extension novel? Not really. Digimarc prototyped their own [extension](https://github.com/digimarc-corp/c2pa-content-credentials-extension) when C2PA packages were newly released. Theirs works by using extension content scripts to show an icon on top of images. You could enable automatic parsing of all images or manually right-click and verify, similar to this extension. One limitation I saw from theirs was it not working on Gemini due to some permission issues. Also, it currently uses an old forked c2pa package.
+
+I personally don't care about labeling each image with an icon to tell me if it's AI or not yet. I only wanted a tool that allows me to verify authenticity if needed via a simple alert. I think if C2PA adoption matures more, it makes sense to create a proper UI for it with more info. 
+
 ## How It Works
 
 The extension uses the C2PA Web SDK to:
