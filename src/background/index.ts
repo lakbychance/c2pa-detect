@@ -35,7 +35,6 @@ async function ensureOffscreen() {
 export default chrome.runtime.onInstalled.addListener(() => {
     console.log("Background Service Worker working...");
 
-
     const contextMenuOptionId = "verify-content-credentials";
 
     chrome.contextMenus.create({
