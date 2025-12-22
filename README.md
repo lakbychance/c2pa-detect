@@ -82,7 +82,7 @@ The extension analyzes C2PA manifests by:
 ## Limitations
 
 - Only works with images that contain C2PA manifest data
-- For Gemini generated images, it sometimes is unable to get manifest store even though it can be found if the same image is downloaded and then verified (here)[verify.contentcredentials.com]
+- For Gemini generated images, it sometimes is unable to get manifest store even though it can be found if the same image is downloaded and then verified [here](verify.contentcredentials.com)
 - Requires offscreen document support.
 
 ## License
