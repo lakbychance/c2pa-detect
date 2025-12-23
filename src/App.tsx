@@ -40,6 +40,11 @@ function App() {
       type: "OFFSCREEN_READY",
     });
 
+    // Hack to keep the background service worker awake
+    setInterval(async () => {
+      (await navigator.serviceWorker?.ready)?.active?.postMessage('keepAlive');
+    }, 20e3);
+
 
     chrome.runtime.onMessage.addListener(handler);
 

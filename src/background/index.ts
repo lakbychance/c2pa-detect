@@ -63,3 +63,7 @@ export default chrome.runtime.onInstalled.addListener(() => {
         }
     });
 });
+
+self.onmessage = () => {
+    console.log('keepalive ping...')
+} // keepalive
